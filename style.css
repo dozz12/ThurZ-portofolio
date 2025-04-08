@@ -16,6 +16,8 @@ img { max-width: 100%; display: block; border-radius: 10px; }
 /* Navbar */
 .navbar {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.7);
   display: flex;
