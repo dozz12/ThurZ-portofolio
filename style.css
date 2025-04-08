@@ -46,8 +46,9 @@ img { max-width: 100%; display: block; border-radius: 10px; }
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 80px;
+  padding-top: 100px; /* Menambah jarak agar tombol tidak terlalu dekat dengan teks */
 }
+
 .hero .highlight { color: #00ffd5; }
 .hero .btn {
   margin-top: 20px;
