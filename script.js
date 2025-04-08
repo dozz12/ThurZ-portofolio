@@ -1,30 +1,27 @@
-// Loader
-window.addEventListener("load", () => {
-  document.querySelector(".loader-wrapper").style.display = "none";
+// Loader Display
+window.addEventListener('load', function () {
+  const loader = document.querySelector('.loader-wrapper');
+  loader.style.display = 'none'; // hide loader after page is fully loaded
 });
 
-// Parallax effect
-window.addEventListener("scroll", () => {
-  const hero = document.querySelector(".hero");
-  hero.style.backgroundPositionY = `${window.scrollY * 0.5}px`;
+// Dark/Matrix Theme Toggle
+const body = document.body;
+const themeButton = document.querySelector('.theme-toggle');
+
+themeButton.addEventListener('click', function() {
+  if (body.classList.contains('dark')) {
+    body.classList.remove('dark');
+    body.classList.add('matrix');
+  } else if (body.classList.contains('matrix')) {
+    body.classList.remove('matrix');
+  } else {
+    body.classList.add('dark');
+  }
 });
 
-// Dark Mode
-document.getElementById("darkToggle").addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+// Contact Form Submission (without email service)
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  alert("Pesan berhasil dikirim! Kami akan segera menghubungi Anda.");
+  document.getElementById('contact-form').reset(); // Reset form after submit
 });
-
-// Matrix Mode
-document.getElementById("matrixBtn").addEventListener("click", () => {
-  document.body.classList.toggle("matrix");
-});
-
-// Simulasi pengiriman form (tanpa backend)
-document.getElementById("contact-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Pesanmu berhasil dikirim (ke luar angkasa) 🚀");
-  this.reset();
-});
-
-// AOS Init
-AOS.init();
