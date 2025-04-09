@@ -1,97 +1,191 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio AndromedaDev | ThurZ</title>
-  <meta name="description" content="Portofolio interaktif terbaik di galaksi Andromeda 🚀">
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet" />
-  <link rel="icon" href="assets/profile.jpg" />
-  <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Portfolio - ThurZ</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> <!-- Optional: Add a favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Fonts -->
 </head>
-<body>
+<body class="dark-mode"> <!-- Default to dark mode -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="#home">ThurZ</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <button id="themeToggle" class="theme-button">Toggle Theme</button>
+            </div>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-  <!-- Loader -->
-  <div class="loader-wrapper">
-    <div class="loader"></div>
-    <p>Memanggil sinyal dari Andromeda...</p>
-  </div>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>ThurZ's Coding Portfolio</h1>
+                <p>Showcasing my expertise in web development, software engineering, and innovative solutions. Let's build the future together!</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="cta-button primary">View Projects</a>
+                    <a href="#contact" class="cta-button secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/600x400" alt="Developer at Work" loading="lazy">
+            </div>
+        </div>
+    </section>
 
-  <!-- Header -->
-  <header class="hero" id="home">
-    <nav class="navbar">
-      <div class="logo">👾 ThurZ</div>
-      <ul class="nav-links">
-        <li><a href="#home">Beranda</a></li>
-        <li><a href="#about">Tentang</a></li>
-        <li><a href="#projects">Proyek</a></li>
-        <li><a href="#contact">Kontak</a></li>
-      </ul>
-      <div class="nav-buttons">
-        <button id="darkToggle" title="Dark Mode">🌓</button>
-        <button id="matrixBtn" title="Matrix Mode">💻</button>
-      </div>
-    </nav>
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>Just a person who likes to spend his time on computer things.</p>
+            <div class="about-stats">
+                <div class="stat-card">
+                    <h3>5+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-card">
+                    <h3>50+</h3>
+                    <p>Completed Projects</p>
+                </div>
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="hero-content" data-aos="zoom-in">
-      <h1>Halo, Saya <span class="highlight">ThurZ</span></h1>
-      <p>Webdev Pemula | UI/UX Designer | Penjelajah Web Kosmik</p>
-      <a href="#projects" class="btn">Lihat Proyek</a>
-    </div>
-  </header>
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Front-End Development</h3>
+                    <p>HTML, CSS, JavaScript, React, Angular</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Back-End Development</h3>
+                    <p>Node.js, Python, Django, Express, SQL</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>DevOps & Tools</h3>
+                    <p>Git, Docker, AWS, CI/CD, Jenkins</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <img src="assets/profile.jpg" alt="Foto Profil" class="profile-img" data-aos="fade-right" />
-      <div class="about-text" data-aos="fade-left">
-        <h2>Tentang Saya</h2>
-        <p>Saya adalah pengembang web dari Bumi yang sedang berekspansi ke seluruh galaksi. Menguasai HTML, CSS, JavaScript, dan desain antarmuka modern. Saya percaya bahwa desain bukan hanya soal tampilan, tapi juga pengalaman pengguna.</p>
-      </div>
-    </div>
-  </section>
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 1" loading="lazy">
+                    <h3>E-Commerce Platform</h3>
+                    <p>A full-stack e-commerce solution built with React and Node.js, featuring payment integration and real-time inventory management.</p>
+                    <a href="#" class="project-link">View Details</a>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 2" loading="lazy">
+                    <h3>Task Management App</h3>
+                    <p>A collaborative task management tool using Angular and Firebase, with real-time updates and user authentication.</p>
+                    <a href="#" class="project-link">View Details</a>
+                </div>
+                <div class="project-card">
+                    <img src="https://via.placeholder.com/300x200" alt="Project 3" loading="lazy">
+                    <h3>Portfolio Website</h3>
+                    <p>This very portfolio! Built with HTML, CSS, and JavaScript, showcasing modern web development techniques.</p>
+                    <a href="#" class="project-link">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <h2 data-aos="fade-up">Proyek Unggulan</h2>
-    <div class="project-list">
-      <div class="project-card" data-aos="zoom-in">
-        <img src="assets/project1.jpg" alt="Project 1">
-        <h3>Flappy-Circle</h3>
-        <p>Game di Website yg Mirip Dengan Flappy Bird (Burik Bgt Anj)</p>
-      </div>
-      <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
-        <h3>Kalkulator ThurZ</h3>
-        <p>Kalkulator Untuk Membantu Lu Menghitung Yekan haha</p>
-      </div>
-      <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
-        <h3>Kaming Sun!</h3>
-        <p>Belum Ada Projek Skrg....</p>
-      </div>
-    </div>
-  </section>
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2>What Clients Say</h2>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <p>"ThurZ delivered a flawless project on time and exceeded our expectations. Their coding skills are top-notch!"</p>
+                    <h4>Sarah Johnson</h4>
+                    <p>Project Manager, TechSolutions</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The attention to detail and creativity in their work is unmatched. Highly recommend for any development project."</p>
+                    <h4>Michael Lee</h4>
+                    <p>CEO, InnovateSoft</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Working with ThurZ was a pleasure. Their expertise in both front-end and back-end development is impressive."</p>
+                    <h4>Emily Davis</h4>
+                    <p>CTO, FutureTech</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2 data-aos="fade-up">Hubungi Saya</h2>
-    <form id="contact-form" data-aos="fade-up">
-      <input type="text" name="name" placeholder="Nama Kamu" required />
-      <input type="email" name="email" placeholder="Email Aktif" required />
-      <textarea name="message" rows="5" placeholder="Pesanmu..." required></textarea>
-      <button type="submit" class="btn">Kirim Pesan</button>
-    </form>
-  </section>
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <form id="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 ThurZ. Dibuat dengan ❤️ Bersama AndromedaDev.</p>
-  </footer>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <p>Learn more about my journey as a developer and my passion for creating innovative solutions.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <p>Email: thurz@email.com</p>
+                    <p>GitHub: <a href="https://github.com/thurz" target="_blank">github.com/thurz</a></p>
+                    <p>LinkedIn: <a href="https://linkedin.com/in/thurz" target="_blank">linkedin.com/in/thurz</a></p>
+                </div>
+            </div>
+            <p class="footer-bottom">© 2023 ThurZ. All rights reserved.</p>
+        </div>
+    </footer>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
