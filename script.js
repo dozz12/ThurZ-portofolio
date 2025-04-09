@@ -3,7 +3,7 @@ window.addEventListener("load", () => {
   document.querySelector(".loader-wrapper").style.display = "none";
 });
 
-// Dark Mode Toggle
+// Dark Mode
 document.getElementById("darkModeToggle").addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
@@ -15,7 +15,7 @@ const ctx = canvas.getContext('2d');
 canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
-const letters = "アンドロメダ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const letters = "アンドロメダ123456789ABCDEF";
 const fontSize = 14;
 const columns = canvas.width / fontSize;
 const drops = Array.from({ length: columns }, () => 1);
@@ -35,10 +35,8 @@ function drawMatrix() {
     drops[i]++;
   }
 }
-
 setInterval(drawMatrix, 50);
 
-// Resize handler
 window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
