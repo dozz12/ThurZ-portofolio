@@ -13,6 +13,7 @@ body {
   background: #0e0e1a;
   color: #fff;
   line-height: 1.6;
+  transition: background 0.3s, color 0.3s;
 }
 a {
   color: #00ffd5;
@@ -55,28 +56,35 @@ img {
   color: #00ffd5;
 }
 #darkModeToggle {
-  background: none;
+  background: transparent;
   border: none;
   color: #00ffd5;
-  font-size: 1.2rem;
   cursor: pointer;
+  font-size: 1.2rem;
 }
 
 /* Hero Section */
 .hero {
-  position: relative;
   height: 100vh;
-  background: #0e0e1a;
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  overflow: hidden;
   padding-top: 100px;
+}
+.matrix-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  text-align: center;
 }
 .hero h1 {
   font-size: 3rem;
@@ -101,31 +109,39 @@ img {
   background: #00c1a4;
 }
 
+/* Fade-in Animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+.fade-in:nth-child(2) { animation-delay: 0.3s; }
+.fade-in:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Sections */
 section {
   padding-top: 120px;
 }
-#about,
-#projects,
-#contact {
+#about, #projects, #contact {
   scroll-margin-top: 120px;
 }
-
-/* Container */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 60px 20px;
 }
-
-/* Section Headings */
 h2 {
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 30px;
 }
-
-/* Paragraphs */
 p {
   text-align: center;
   font-size: 1.1rem;
@@ -155,7 +171,7 @@ p {
   margin-bottom: 10px;
 }
 
-/* Contact */
+/* Contact Form */
 form {
   max-width: 500px;
   margin: 0 auto;
@@ -163,8 +179,7 @@ form {
   flex-direction: column;
   gap: 15px;
 }
-input,
-textarea {
+input, textarea {
   padding: 12px;
   border-radius: 8px;
   border: none;
@@ -222,36 +237,23 @@ footer {
 }
 
 /* Dark Mode */
-body.dark-mode {
-  background: #121212;
-  color: #e0e0e0;
+.dark-mode {
+  background: #111;
+  color: #eee;
 }
-body.dark-mode .navbar {
-  background: rgba(255, 255, 255, 0.05);
+.dark-mode .navbar {
+  background: rgba(20, 20, 20, 0.8);
 }
-body.dark-mode .project-card {
+.dark-mode .project-card {
   background: #222;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
-body.dark-mode .btn,
-body.dark-mode button {
+.dark-mode button {
   background: #00ffd5;
   color: #000;
 }
-body.dark-mode .btn:hover,
-body.dark-mode button:hover {
+.dark-mode .btn:hover,
+.dark-mode button:hover {
   background: #00c1a4;
-}
-
-/* Matrix Background */
-.matrix-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
 }
 
 /* Responsive */
