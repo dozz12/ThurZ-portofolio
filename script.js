@@ -80,7 +80,11 @@ gsap.utils.toArray('.section').forEach(section => {
             end: 'bottom 20%',
             toggleClass: 'visible',
             once: true
-        }
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        ease: 'power2.out'
     });
 });
 
@@ -89,7 +93,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+            behavior: 'smooth',
+            block: 'start'
         });
     });
 });
@@ -109,6 +114,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
     })
     .catch(error => {
         alert('Oops! Something went wrong. Please try again.');
+        console.error('Error:', error);
     });
 });
 
@@ -117,4 +123,9 @@ document.querySelectorAll('.project-btn').forEach(button => {
     button.addEventListener('click', () => {
         alert('Project details would appear in a modal here. Contact ThurZ for more info!');
     });
+});
+
+// Ensure all animations and interactions load after DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Website fully loaded and ready.');
 });
