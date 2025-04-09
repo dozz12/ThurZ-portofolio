@@ -209,26 +209,6 @@ footer {
   to { transform: rotate(360deg); }
 }
 
-/* Dark Mode */
-.dark-mode {
-  background: #111;
-  color: #eee;
-}
-.dark-mode .navbar {
-  background: rgba(20, 20, 20, 0.8);
-}
-.dark-mode .project-card {
-  background: #222;
-}
-.dark-mode button {
-  background: #00ffd5;
-  color: #000;
-}
-.dark-mode .btn:hover,
-.dark-mode button:hover {
-  background: #00c1a4;
-}
-
 /* Responsive */
 @media screen and (max-width: 768px) {
   .nav-links {
