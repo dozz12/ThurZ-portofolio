@@ -59,28 +59,14 @@ body {
     position: relative;
 }
 
-/* Explicit styling for h1 */
-h1 {
-    font-size: 4rem; /* Larger, clear size for prominence */
-    margin-bottom: 1.5rem; /* Adequate spacing below */
+#hero h1 {
+    font-size: 4rem;
     background: linear-gradient(45deg, #00FFFF, #00CCFF);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    margin-bottom: 1rem;
     text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
-    font-weight: 700; /* Bold for emphasis */
-}
-
-/* Ensure other headings have consistent margins */
-h2 {
-    font-size: 2.5rem;
-    background: linear-gradient(45deg, #00FFFF, #00CCFF);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
-    font-weight: 600;
 }
 
 #hero p {
@@ -106,6 +92,16 @@ h2 {
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(0, 255, 255, 0.5);
     background: linear-gradient(45deg, #00CCFF, #00FFFF);
+}
+
+.section h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #00FFFF, #00CCFF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 }
 
 .skills-grid, .projects-grid {
