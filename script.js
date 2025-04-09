@@ -1,98 +1,120 @@
-// Hamburger menu toggle
-const burger = document.querySelector('.burger');
-const navLinks = document.querySelector('.nav-links');
-const themeToggle = document.getElementById('themeToggle');
-const body = document.body;
+// Particle Background
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
 
-burger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    burger.classList.toggle('active');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+class Particle {
+    constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+    }
+
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+    }
+
+    draw() {
+        ctx.fillStyle = 'rgba(0, 255, 255, 0.5)';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+    }
+}
+
+const particles = [];
+for (let i = 0; i < 100; i++) {
+    particles.push(new Particle());
+}
+
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(particle => {
+        particle.update();
+        particle.draw();
+    });
+    requestAnimationFrame(animateParticles);
+}
+
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 });
 
-// Smooth scrolling for navigation links
+animateParticles();
+
+// Custom Cursor
+const cursor = document.querySelector('.custom-cursor');
+
+document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+document.querySelectorAll('a, button, .cta-button, .project-btn, .more-btn').forEach(element => {
+    element.addEventListener('mouseover', () => {
+        cursor.style.transform = 'scale(1.5)';
+        cursor.style.background = 'rgba(0, 255, 255, 0.8)';
+    });
+    element.addEventListener('mouseout', () => {
+        cursor.style.transform = 'scale(1)';
+        cursor.style.background = 'rgba(0, 255, 255, 0.5)';
+    });
+});
+
+// GSAP Scroll Animations
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray('.section').forEach(section => {
+    gsap.from(section, {
+        scrollTrigger: {
+            trigger: section,
+            start: 'top 80%',
+            end: 'bottom 20%',
+            toggleClass: 'visible',
+            once: true
+        }
+    });
+});
+
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         document.querySelector(this.getAttribute('href')).scrollIntoView({
             behavior: 'smooth'
         });
-        if (window.innerWidth <= 768) {
-            navLinks.classList.remove('active');
-            burger.classList.remove('active');
-        }
     });
 });
 
-// Testimonials slider
-let scrollPosition = 0;
-const testimonialsSlider = document.querySelector('.testimonials-slider');
-
-function scrollTestimonials(direction) {
-    const cardWidth = testimonialsSlider.querySelector('.testimonial-card').offsetWidth + 20; // Including gap
-    scrollPosition += direction * cardWidth * 2; // Scroll two cards at a time
-    scrollPosition = Math.max(0, Math.min(scrollPosition, testimonialsSlider.scrollWidth - testimonialsSlider.clientWidth));
-    testimonialsSlider.scrollLeft = scrollPosition;
-}
-
-// Add click events for navigation arrows (if you want to add them in HTML)
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') scrollTestimonials(-1);
-    if (e.key === 'ArrowRight') scrollTestimonials(1);
-});
-
-// Form submission
-const contactForm = document.getElementById('contact-form');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const message = formData.get('message');
-
-        if (name && email && message) {
-            alert(`Thank you, ${name}! Your message has been sent. I'll get back to you at ${email} soon.`);
-            this.reset();
-        } else {
-            alert('Please fill in all fields.');
-        }
-    });
-}
-
-// Animation on scroll
-document.addEventListener('scroll', () => {
-    const elements = document.querySelectorAll('.animate');
-    elements.forEach(element => {
-        const rect = element.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-            element.classList.add('visible');
-        }
+// Form Submission (Simulated)
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    fetch('https://api.example.com/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Message sent successfully! I’ll contact you soon.');
+        this.reset();
+    })
+    .catch(error => {
+        alert('Oops! Something went wrong. Please try again.');
     });
 });
 
-// Initial load animations
-window.addEventListener('load', () => {
-    document.querySelectorAll('.animate').forEach(element => {
-        element.classList.add('visible');
+// Project Modals
+document.querySelectorAll('.project-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        alert('Project details would appear in a modal here. Contact ThurZ for more info!');
     });
-});
-
-// Theme toggle
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    body.classList.toggle('light-mode');
-    localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light'); // Save preference
-});
-
-// Load saved theme
-window.addEventListener('load', () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        body.classList.remove('dark-mode');
-        body.classList.add('light-mode');
-    } else {
-        body.classList.add('dark-mode');
-        body.classList.remove('light-mode');
-    }
 });
