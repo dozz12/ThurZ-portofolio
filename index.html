@@ -2,96 +2,83 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio AndromedaDev | ThurZ</title>
-  <meta name="description" content="Portofolio interaktif terbaik di galaksi Andromeda 🚀">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portofolio Alien Dev</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;800&display=swap" rel="stylesheet" />
-  <link rel="icon" href="assets/profile.jpg" />
-  <!-- AOS Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-
   <!-- Loader -->
   <div class="loader-wrapper">
     <div class="loader"></div>
-    <p>Memanggil sinyal dari Andromeda...</p>
+    <p>Memuat dari galaksi...</p>
   </div>
 
-  <!-- Header -->
-  <header class="hero" id="home">
-    <nav class="navbar">
-      <div class="logo">👾 ThurZ</div>
-      <ul class="nav-links">
-        <li><a href="#home">Beranda</a></li>
-        <li><a href="#about">Tentang</a></li>
-        <li><a href="#projects">Proyek</a></li>
-        <li><a href="#contact">Kontak</a></li>
-      </ul>
-      <div class="nav-buttons">
-        <button id="darkToggle" title="Dark Mode">🌓</button>
-        <button id="matrixBtn" title="Matrix Mode">💻</button>
-      </div>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">👽 ThurZ</div>
+    <ul class="nav-links">
+      <li><a href="#home">Beranda</a></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#projects">Proyek</a></li>
+      <li><a href="#contact">Kontak</a></li>
+      <li><button id="darkModeToggle">🌓</button></li>
+    </ul>
+  </nav>
 
-    <div class="hero-content" data-aos="zoom-in">
-      <h1>Halo, Saya <span class="highlight">ThurZ</span></h1>
-      <p>Webdev Pemula | UI/UX Designer | Penjelajah Web Kosmik</p>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <canvas class="matrix-bg"></canvas>
+    <div class="hero-content">
+      <h1>Halo, Saya <span class="highlight">Alien Dev</span></h1>
+      <p class="highlight">Saya Menguasai 3 Bahasa Yaitu HTML CSS Dan JS 🚀</p>
       <a href="#projects" class="btn">Lihat Proyek</a>
     </div>
-  </header>
+  </section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
+  <!-- About -->
+  <section id="about">
     <div class="container">
-      <img src="assets/profile.jpg" alt="Foto Profil" class="profile-img" data-aos="fade-right" />
-      <div class="about-text" data-aos="fade-left">
-        <h2>Tentang Saya</h2>
-        <p>Saya adalah pengembang web dari Bumi yang sedang berekspansi ke seluruh galaksi. Menguasai HTML, CSS, JavaScript, dan desain antarmuka modern. Saya percaya bahwa desain bukan hanya soal tampilan, tapi juga pengalaman pengguna.</p>
+      <h2>Tentang Saya</h2>
+      <p>Saya Spesialis di HTML, CSS, JS.</p>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="container">
+      <h2>Proyek</h2>
+      <div class="project-list">
+        <div class="project-card">
+          <h3>Galactic Portfolio</h3>
+          <p>Website portofolio dengan tema galaksi, lengkap dengan Matrix effect.</p>
+        </div>
+        <div class="project-card">
+          <h3>Wormhole CMS</h3>
+          <p>Masih Dalam Tahap Pengembangan.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <h2 data-aos="fade-up">Proyek Unggulan</h2>
-    <div class="project-list">
-      <div class="project-card" data-aos="zoom-in">
-        <img src="assets/project1.jpg" alt="Project 1">
-        <h3>Flappy-Circle</h3>
-        <p>Game di Website yg Mirip Dengan Flappy Bird (Burik Bgt Anj)</p>
-      </div>
-      <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
-        <h3>Kalkulator ThurZ</h3>
-        <p>Kalkulator Untuk Membantu Lu Menghitung Yekan haha</p>
-      </div>
-      <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
-        <h3>Kaming Sun!</h3>
-        <p>Belum Ada Projek Skrg....</p>
-      </div>
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2>Kontak Saya</h2>
+      <form>
+        <input type="text" placeholder="Nama" required />
+        <input type="email" placeholder="Email" required />
+        <textarea placeholder="Pesan"></textarea>
+        <button type="submit">Kirim</button>
+      </form>
     </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2 data-aos="fade-up">Hubungi Saya</h2>
-    <form id="contact-form" data-aos="fade-up">
-      <input type="text" name="name" placeholder="Nama Kamu" required />
-      <input type="email" name="email" placeholder="Email Aktif" required />
-      <textarea name="message" rows="5" placeholder="Pesanmu..." required></textarea>
-      <button type="submit" class="btn">Kirim Pesan</button>
-    </form>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 ThurZ. Dibuat dengan ❤️ Bersama AndromedaDev.</p>
+    <p>© 2025 Alien Dev - Made with Coffee.</p>
   </footer>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
