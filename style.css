@@ -6,14 +6,13 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
+  scroll-padding-top: 100px; /* Biar scroll anchor gak ketutup navbar */
 }
 body {
   font-family: 'Poppins', sans-serif;
   background: #0e0e1a;
   color: #fff;
   line-height: 1.6;
-  transition: background 0.3s, color 0.3s;
 }
 a {
   color: #00ffd5;
@@ -55,36 +54,16 @@ img {
 .nav-links li a:hover {
   color: #00ffd5;
 }
-#darkModeToggle {
-  background: transparent;
-  border: none;
-  color: #00ffd5;
-  cursor: pointer;
-  font-size: 1.2rem;
-}
 
 /* Hero Section */
 .hero {
   height: 100vh;
-  position: relative;
-  overflow: hidden;
+  background: url('https://source.unsplash.com/1600x900/?space') center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 100px;
-}
-.matrix-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
   text-align: center;
+  padding-top: 100px; /* Tambahan jarak dari atas */
 }
 .hero h1 {
   font-size: 3rem;
@@ -95,7 +74,7 @@ img {
   font-size: 1.2rem;
 }
 .hero .btn {
-  margin-top: 30px;
+  margin-top: 30px; /* Tambah jarak biar gak nabrak */
   padding: 10px 25px;
   background: #00ffd5;
   color: #000;
@@ -109,39 +88,32 @@ img {
   background: #00c1a4;
 }
 
-/* Fade-in Animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
-}
-.fade-in:nth-child(2) { animation-delay: 0.3s; }
-.fade-in:nth-child(3) { animation-delay: 0.6s; }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Sections */
 section {
-  padding-top: 120px;
+  padding-top: 120px; /* Buat spasi biar konten gak ketutup navbar */
 }
-#about, #projects, #contact {
-  scroll-margin-top: 120px;
+
+#about,
+#projects,
+#contact {
+  scroll-margin-top: 120px; /* Biar anchor scroll gak ketutup */
 }
+
+/* Container */
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 60px 20px;
 }
+
+/* Section Headings */
 h2 {
   text-align: center;
   font-size: 2.2rem;
   margin-bottom: 30px;
 }
+
+/* Paragraphs */
 p {
   text-align: center;
   font-size: 1.1rem;
@@ -171,7 +143,7 @@ p {
   margin-bottom: 10px;
 }
 
-/* Contact Form */
+/* Contact */
 form {
   max-width: 500px;
   margin: 0 auto;
@@ -179,7 +151,8 @@ form {
   flex-direction: column;
   gap: 15px;
 }
-input, textarea {
+input,
+textarea {
   padding: 12px;
   border-radius: 8px;
   border: none;
@@ -236,26 +209,6 @@ footer {
   to { transform: rotate(360deg); }
 }
 
-/* Dark Mode */
-.dark-mode {
-  background: #111;
-  color: #eee;
-}
-.dark-mode .navbar {
-  background: rgba(20, 20, 20, 0.8);
-}
-.dark-mode .project-card {
-  background: #222;
-}
-.dark-mode button {
-  background: #00ffd5;
-  color: #000;
-}
-.dark-mode .btn:hover,
-.dark-mode button:hover {
-  background: #00c1a4;
-}
-
 /* Responsive */
 @media screen and (max-width: 768px) {
   .nav-links {
@@ -269,4 +222,6 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+}
+
 }
