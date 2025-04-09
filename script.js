@@ -1,120 +1,153 @@
-// Particle Background
-const canvas = document.getElementById('particle-canvas');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 2 - 1;
-        this.speedY = Math.random() * 2 - 1;
-    }
-
-    update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-    }
-
-    draw() {
-        ctx.fillStyle = 'rgba(0, 255, 255, 0.5)';
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
-    }
+// Mobile Navigation
+const navSlide = () => {
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    // Toggle Navigation
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        
+        // Animate Links
+        navLinks.forEach((link, index) => {
+            if (link.style.animation) {
+                link.style.animation = '';
+            } else {
+                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+            }
+        });
+        
+        // Burger Animation
+        burger.classList.toggle('toggle');
+    });
 }
 
-const particles = [];
-for (let i = 0; i < 100; i++) {
-    particles.push(new Particle());
-}
-
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(particle => {
-        particle.update();
-        particle.draw();
-    });
-    requestAnimationFrame(animateParticles);
-}
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
-
-animateParticles();
-
-// Custom Cursor
-const cursor = document.querySelector('.custom-cursor');
-
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
-
-document.querySelectorAll('a, button, .cta-button, .project-btn, .more-btn').forEach(element => {
-    element.addEventListener('mouseover', () => {
-        cursor.style.transform = 'scale(1.5)';
-        cursor.style.background = 'rgba(0, 255, 255, 0.8)';
-    });
-    element.addEventListener('mouseout', () => {
-        cursor.style.transform = 'scale(1)';
-        cursor.style.background = 'rgba(0, 255, 255, 0.5)';
-    });
-});
-
-// GSAP Scroll Animations
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.utils.toArray('.section').forEach(section => {
-    gsap.from(section, {
-        scrollTrigger: {
-            trigger: section,
-            start: 'top 80%',
-            end: 'bottom 20%',
-            toggleClass: 'visible',
-            once: true
-        }
-    });
-});
-
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
+// Smooth Scrolling for Navigation Links
+const smoothScroll = () => {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Close mobile menu if open
+            const nav = document.querySelector('.nav-links');
+            const burger = document.querySelector('.burger');
+            if (nav.classList.contains('nav-active')) {
+                nav.classList.remove('nav-active');
+                burger.classList.remove('toggle');
+                
+                navLinks.forEach(link => {
+                    link.style.animation = '';
+                });
+            }
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            window.scrollTo({
+                top: targetElement.offsetTop - 70,
+                behavior: 'smooth'
+            });
         });
     });
-});
+}
 
-// Form Submission (Simulated)
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(this);
-    fetch('https://api.example.com/submit', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('Message sent successfully! I’ll contact you soon.');
-        this.reset();
-    })
-    .catch(error => {
-        alert('Oops! Something went wrong. Please try again.');
-    });
-});
+// Form Handling
+const handleForm = () => {
+    const form = document.getElementById('contact-form');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple form validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill out all fields');
+                return;
+            }
+            
+            // Here you would typically send the form data to a server
+            // Since this is a portfolio template, we'll just show a success message
+            alert('Thank you for your message! I will get back to you soon.');
+            form.reset();
+        });
+    }
+}
 
-// Project Modals
-document.querySelectorAll('.project-btn').forEach(button => {
-    button.addEventListener('click', () => {
-        alert('Project details would appear in a modal here. Contact ThurZ for more info!');
+// Scroll Animation for Skills and Projects
+const scrollAnimation = () => {
+    const skillCards = document.querySelectorAll('.skill-card');
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    // Check if element is in viewport
+    const isInViewport = (element) => {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+    
+    // Animate on scroll
+    const checkCards = () => {
+        skillCards.forEach(card => {
+            if (isInViewport(card)) {
+                card.style.transform = 'translateY(0)';
+                card.style.opacity = '1';
+            }
+        });
+        
+        projectCards.forEach(card => {
+            if (isInViewport(card)) {
+                card.style.transform = 'translateY(0)';
+                card.style.opacity = '1';
+            }
+        });
+    }
+    
+    // Initialize styles
+    skillCards.forEach(card => {
+        card.style.transform = 'translateY(50px)';
+        card.style.opacity = '0';
+        card.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
     });
-});
+    
+    projectCards.forEach(card => {
+        card.style.transform = 'translateY(50px)';
+        card.style.opacity = '0';
+        card.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+    });
+    
+    // Check on load and scroll
+    window.addEventListener('load', checkCards);
+    window.addEventListener('scroll', checkCards);
+}
+
+// Update current year in the footer
+const updateYear = () => {
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+}
+
+// Initialize all functions
+const init = () => {
+    navSlide();
+    smoothScroll();
+    handleForm();
+    scrollAnimation();
+    updateYear();
+}
+
+// Run when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', init);
