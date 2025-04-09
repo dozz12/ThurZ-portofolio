@@ -6,7 +6,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px; /* Biar scroll anchor gak ketutup navbar */
+  scroll-padding-top: 100px;
 }
 body {
   font-family: 'Poppins', sans-serif;
@@ -54,16 +54,29 @@ img {
 .nav-links li a:hover {
   color: #00ffd5;
 }
+#darkModeToggle {
+  background: none;
+  border: none;
+  color: #00ffd5;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
 
 /* Hero Section */
 .hero {
+  position: relative;
   height: 100vh;
-  background: url('https://source.unsplash.com/1600x900/?space') center/cover no-repeat;
+  background: #0e0e1a;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding-top: 100px; /* Tambahan jarak dari atas */
+  overflow: hidden;
+  padding-top: 100px;
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
 }
 .hero h1 {
   font-size: 3rem;
@@ -74,7 +87,7 @@ img {
   font-size: 1.2rem;
 }
 .hero .btn {
-  margin-top: 30px; /* Tambah jarak biar gak nabrak */
+  margin-top: 30px;
   padding: 10px 25px;
   background: #00ffd5;
   color: #000;
@@ -90,13 +103,12 @@ img {
 
 /* Sections */
 section {
-  padding-top: 120px; /* Buat spasi biar konten gak ketutup navbar */
+  padding-top: 120px;
 }
-
 #about,
 #projects,
 #contact {
-  scroll-margin-top: 120px; /* Biar anchor scroll gak ketutup */
+  scroll-margin-top: 120px;
 }
 
 /* Container */
@@ -209,6 +221,39 @@ footer {
   to { transform: rotate(360deg); }
 }
 
+/* Dark Mode */
+body.dark-mode {
+  background: #121212;
+  color: #e0e0e0;
+}
+body.dark-mode .navbar {
+  background: rgba(255, 255, 255, 0.05);
+}
+body.dark-mode .project-card {
+  background: #222;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+body.dark-mode .btn,
+body.dark-mode button {
+  background: #00ffd5;
+  color: #000;
+}
+body.dark-mode .btn:hover,
+body.dark-mode button:hover {
+  background: #00c1a4;
+}
+
+/* Matrix Background */
+.matrix-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* Responsive */
 @media screen and (max-width: 768px) {
   .nav-links {
@@ -223,6 +268,3 @@ footer {
     align-items: center;
   }
 }
-
-}
-
